@@ -2,22 +2,17 @@ import dht
 from machine import Pin
 import time
 
-# Nastavení pinu pro DHT11 (používáme GP16)
-sensor = dht.DHT11(Pin(16))  # Používáme GPIO16 (pin 21 na Pico)
+# Používáme GPIO16 (fyzický pin 21) pro datový pin senzoru
+sensor = dht.DHT11(Pin(16))
 
 while True:
     try:
-        # Měření teploty a vlhkosti
-        sensor.measure()
+        sensor.measure()  # Spustí měření
         teplota = sensor.temperature()
         vlhkost = sensor.humidity()
-
-        # Výpis hodnot do konzole
-        print('Teplota: {} °C'.format(teplota))
-        print('Vlhkost: {} %'.format(vlhkost))
-
+        print("Teplota: {} °C".format(teplota))
+        print("Vlhkost: {} %".format(vlhkost))
     except OSError as e:
-        print('Chyba při čtení dat ze senzoru')
+        print("Chyba při čtení dat ze senzoru:", e)
 
-    # Čekání 2 sekundy před dalším měřením
     time.sleep(2)
