@@ -4,8 +4,8 @@ import time
 import dht
 import machine
 
-ssid = "Svec_wifi"
-password = "197619802008"
+ssid = "fcvp"
+password = "12345678"
 
 # Wi-Fi připojení
 wlan = network.WLAN(network.STA_IF)
